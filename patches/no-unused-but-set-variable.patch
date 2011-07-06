@@ -1,0 +1,24 @@
+# HG changeset patch
+# User Olaf Hering <olaf@aepfle.de>
+# Date 1305960946 -3600
+# Node ID 0f670f5146c858ffdc743176d4e22aef4bfe12da
+# Parent  fb517cc27adef3a7ad548e7397e02e1414132ead
+gcc-4.6 compile fix: build with -Wno-unused-but-set-variable
+
+Avoid "error: variable 'unused' set but not used
+[-Werror=unused-but-set-variable]" with gcc 4.6.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+
+Index: b/Config.mk
+===================================================================
+--- a/Config.mk	2011-07-06 22:58:59.000000000 +0100
++++ b/Config.mk	2011-07-06 22:59:24.000000000 +0100
+@@ -150,6 +150,7 @@
+ 
+ $(call cc-option-add,HOSTCFLAGS,HOSTCC,-Wdeclaration-after-statement)
+ $(call cc-option-add,CFLAGS,CC,-Wdeclaration-after-statement)
++$(call cc-option-add,CFLAGS,CC,-Wno-unused-but-set-variable)
+ 
+ LDFLAGS += $(foreach i, $(EXTRA_LIB), -L$(i)) 
+ CFLAGS += $(foreach i, $(EXTRA_INCLUDES), -I$(i))

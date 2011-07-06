@@ -52,3 +52,7 @@ tools-xenmon-install.diff
 tools-python-shebang.diff
 
 tools-xenstore-compatibility.diff
+
+cset-23341-gcc-46.diff
+no-unused-but-set-variable.patch
+tools-libxc-fix-cpu-online.diff 

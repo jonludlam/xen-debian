@@ -1,0 +1,28 @@
+# HG changeset patch
+# User Gianni Tedesco <gianni.tedesco@citrix.com>
+# Date 1302186418 -3600
+# Node ID dbf2ddf652dc3dd927447e79ef4bc586de55d708
+# Parent  f8e4c95e60e31be799bab6b5083395cadc5643a2
+libxc: set all VCPU's online by default in HVM info table
+
+This sets a saner default for the cpu-online-map by setting all bits
+to 1. The default assumption ought to be that nr-vcpus ==
+nr-vcpus-at-start. If that is not true, then the toolstack must modify
+the bitmap, but if it is true, the toolstack oughtn't need to do
+anything further.
+
+Signed-off-by: Gianni Tedesco <gianni.tedesco@citrix.com>
+xen-unstable changeset:   23179:2b66b83b19b6
+xen-unstable date:        Thu Apr 07 12:13:58 2011 +0100
+
+diff -r f8e4c95e60e3 -r dbf2ddf652dc tools/libxc/xc_hvm_build.c
+--- a/tools/libxc/xc_hvm_build.c
++++ b/tools/libxc/xc_hvm_build.c
+@@ -70,6 +70,7 @@
+     hvm_info->acpi_enabled = 1;
+     hvm_info->apic_mode = 1;
+     hvm_info->nr_vcpus = 1;
++    memset(hvm_info->vcpu_online, 0xff, sizeof(hvm_info->vcpu_online));
+ 
+     /* Memory parameters. */
+     hvm_info->low_mem_pgend = lowmem_end >> PAGE_SHIFT;
