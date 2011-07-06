@@ -2,4 +2,7 @@ usr/lib/{libxenctrl.a,libxenguest.a}
 usr/lib/libxenstore.{a,so}
 usr/include/{xenctrl.h,xenguest.h}
 usr/include/{xs.h,xs_lib.h}
+usr/include/xentoollog.h
+usr/include/xenctrlosdep.h
 usr/include/xen
+usr/lib/ocaml/{xl,xb,xc,xs,eventchn,mmap,uuid}

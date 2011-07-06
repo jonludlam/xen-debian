@@ -70,6 +70,7 @@ $(STAMPS_DIR)/install-utils_$(ARCH): CONFIG = \
 		XEN_COMPILE_ARCH=$(XEN_ARCH) \
 		XEN_TARGET_ARCH=$(XEN_ARCH) \
 		XEN_VERSION=$(VERSION) \
+		OCAMLDESTDIR=$(CURDIR)/$(BUILD_DIR)/install-utils_$(ARCH)$(shell ocamlc -where) \
 		PYTHON=$(shell pyversions -r)
 
 $(STAMPS_DIR)/build-utils_$(ARCH): DIR=$(BUILD_DIR)/build-utils_$(ARCH)
