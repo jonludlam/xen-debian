@@ -56,3 +56,4 @@ tools-xenstore-compatibility.diff
 cset-23341-gcc-46.diff
 no-unused-but-set-variable.patch
 tools-libxc-fix-cpu-online.diff 
+ocaml-install-correctly.patch
