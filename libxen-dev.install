@@ -5,4 +5,14 @@ usr/include/{xs.h,xs_lib.h}
 usr/include/xentoollog.h
 usr/include/xenctrlosdep.h
 usr/include/xen
-usr/lib/ocaml/{xl,xb,xc,xs,eventchn,mmap,uuid,stublibs}
+usr/lib/ocaml/{xl,xb,xc,xs,eventchn,mmap,uuid}
+usr/lib/ocaml/stublibs/dlleventchn_stubs.so
+usr/lib/ocaml/stublibs/dlleventchn_stubs.so.owner
+usr/lib/ocaml/stublibs/dllmmap_stubs.so
+usr/lib/ocaml/stublibs/dllmmap_stubs.so.owner
+usr/lib/ocaml/stublibs/dllxb_stubs.so
+usr/lib/ocaml/stublibs/dllxb_stubs.so.owner
+usr/lib/ocaml/stublibs/dllxc_stubs.so
+usr/lib/ocaml/stublibs/dllxc_stubs.so.owner
+usr/lib/ocaml/stublibs/dllxl_stubs.so
+usr/lib/ocaml/stublibs/dllxl_stubs.so.owner
