@@ -15,7 +15,9 @@ Build-Depends:
  libncurses5-dev,
  libpci-dev,
  uuid-dev,
- zlib1g-dev
+ zlib1g-dev,
+ ocaml-nox,
+ ocaml-findlib
 Build-Depends-Indep:
  graphviz,
  ghostscript,

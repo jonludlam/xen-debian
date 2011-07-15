@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Xen Team <pkg-xen-devel@lists.alioth.debian.org>
 Uploaders: Julien Danjou <acid@debian.org>, Guido Trotter <ultrotter@debian.org>, Bastian Blank <waldi@debian.org>
 Standards-Version: 3.8.4
-Build-Depends: debhelper (>> 7), lsb-release, python2.6-dev, python-support, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev
+Build-Depends: debhelper (>> 7), lsb-release, python2.6-dev, python-support, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev, ocaml-nox, ocaml-findlib
 Build-Depends-Indep: graphviz, ghostscript, texlive-fonts-recommended, texlive-font-utils, texlive-latex-recommended
 XS-Python-Version: 2.6
 

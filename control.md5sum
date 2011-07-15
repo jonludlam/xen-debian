@@ -1,8 +1,8 @@
-e4c785f0a9535c75bc5ba103f1e62b2e  debian/changelog
+39dc7ab6b081f0d162bf237fcea10066  debian/changelog
 24f2598a23e30264aea4a983d5d19eec  debian/bin/gencontrol.py
 667edd28bcda9cd243bb69c78e452aad  debian/templates/control.hypervisor.in
 e4335ab10e217a12328cdf123473ed37  debian/templates/control.main.in
-47239022238fcd3eec039dc0a5e2a906  debian/templates/control.source.in
+ba85c3e497a1666cd044c48ea36a8692  debian/templates/control.source.in
 92c32bf7b0389c47b11d05885f605750  debian/templates/control.utils.in
 a15fa64ce6deead28d33c1581b14dba7  debian/templates/xen-hypervisor.postinst.in
 22492e0565a4754b5e008ca7cac871da  debian/templates/xen-hypervisor.postrm.in
