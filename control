@@ -40,6 +40,20 @@ Conflicts: xen-utils-common (<= 3.1.0-1)
 Description: Xenstore utilities for Xen
  This package contains the Xenstore utilities.
 
+Package: libxen-ocaml
+Architecture: any
+Section: libs
+Depends: ocaml-base-nox-${F:OCamlABI}, ${shlibs:Depends}, ${misc:Depends}
+Description: a thing
+ etc etc.
+
+Package: libxen-ocaml-dev
+Architecture: any
+Section: libdevel
+Depends: ocaml-nox-${F:OCamlABI}, libxen-ocaml (= ${binary:Version}), ${shlibs:Depends}, ocaml-findlib (>= 1.1), ${misc:Depends}
+Description: another thing
+ etc etc.
+
 Package: xen-utils-4.1
 Architecture: amd64 i386
 Provides: xen-utils

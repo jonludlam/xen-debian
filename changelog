@@ -1,9 +1,16 @@
-xen (4.1.0-3.1) unstable; urgency=low
+xen (4.1.1-1.1) UNRELEASED; urgency=low
 
   * Non-maintainer upload.
-  * Build the ocaml libs to be packaged in libxen-devZ 
+  * Build the ocaml libs to be packaged in libxen-devZ
 
- -- Jon Ludlam <jonathan.ludlam@eu.citrix.com>  Fri, 15 Jul 2011 13:55:56 +0100
+ -- Ian Campbell <Ian.Campbell@citrix.com>  Mon, 18 Jul 2011 11:30:39 +0100
+
+xen (4.1.1-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+  * Don't use qemu-dm if it is not needed. (Backport from xen-unstable.)
+
+ -- Bastian Blank <waldi@debian.org>  Fri, 24 Jun 2011 17:19:44 +0000
 
 xen (4.1.0-3) unstable; urgency=low
 

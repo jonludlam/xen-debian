@@ -30,3 +30,17 @@ Replaces: xen-utils-common (<= 3.1.0-1)
 Description: Xenstore utilities for Xen
  This package contains the Xenstore utilities.
 
+Package: libxen-ocaml
+Section: libs
+Architecture: any
+Depends: ocaml-base-nox-${F:OCamlABI}, ${shlibs:Depends}, ${misc:Depends}
+Description: a thing
+ etc etc.
+
+Package: libxen-ocaml-dev
+Section: libdevel
+Architecture: any
+Depends: ocaml-nox-${F:OCamlABI}, libxen-ocaml (= ${binary:Version}), ${shlibs:Depends}, ocaml-findlib (>= 1.1), ${misc:Depends}
+Description: another thing
+ etc etc.
+
