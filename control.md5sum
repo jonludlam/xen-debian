@@ -1,4 +1,4 @@
-e5410e75af6a2e71d85e4bf2c5e8db89  debian/changelog
+1eda992a05ab5f0792c4175dc5e2c25c  debian/changelog
 24f2598a23e30264aea4a983d5d19eec  debian/bin/gencontrol.py
 667edd28bcda9cd243bb69c78e452aad  debian/templates/control.hypervisor.in
 e939099f56e009acdfab624d399b2b29  debian/templates/control.main.in
