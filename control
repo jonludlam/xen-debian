@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Xen Team <pkg-xen-devel@lists.alioth.debian.org>
 Uploaders: Julien Danjou <acid@debian.org>, Guido Trotter <ultrotter@debian.org>, Bastian Blank <waldi@debian.org>
 Standards-Version: 3.8.4
-Build-Depends: debhelper (>> 7), lsb-release, python2.6-dev, python-support, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev, ocaml-nox, ocaml-findlib
+Build-Depends: debhelper (>> 7), lsb-release, dh-ocaml, python-dev, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev, ocaml-nox, ocaml-findlib
 Build-Depends-Indep: graphviz, ghostscript, texlive-fonts-recommended, texlive-font-utils, texlive-latex-recommended
 XS-Python-Version: 2.6
 
@@ -43,16 +43,20 @@ Description: Xenstore utilities for Xen
 Package: libxen-ocaml
 Architecture: any
 Section: libs
-Depends: ocaml-base-nox-${F:OCamlABI}, ${shlibs:Depends}, ${misc:Depends}
-Description: a thing
- etc etc.
+Provides: ${ocaml:Provides}
+Depends: ocaml-base-nox-${F:OCamlABI}, ${shlibs:Depends}, ${misc:Depends}, ${ocaml:Depends}
+Description: OCaml libraries for controlling Xen
+ This package contains the runtime libraries required for the ocaml
+ bindings to the Xen control libraries.
 
 Package: libxen-ocaml-dev
 Architecture: any
 Section: libdevel
-Depends: ocaml-nox-${F:OCamlABI}, libxen-ocaml (= ${binary:Version}), ${shlibs:Depends}, ocaml-findlib (>= 1.1), ${misc:Depends}
-Description: another thing
- etc etc.
+Provides: ${ocaml:Provides}
+Depends: ocaml-nox-${F:OCamlABI}, libxen-ocaml (= ${binary:Version}), ${shlibs:Depends}, ocaml-findlib (>= 1.1), ${misc:Depends}, ${ocaml:Depends}
+Description: OCaml libraries for controlling Xen (devel package)
+ This package contains the ocaml findlib packages for compiling
+ applications that are designed to control the Xen hypervisor.
 
 Package: xen-utils-4.1
 Architecture: amd64 i386
