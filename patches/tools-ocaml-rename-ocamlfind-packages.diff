@@ -1,0 +1,109 @@
+# HG changeset patch
+# User Jon Ludlam <jonathan.ludlam@eu.citrix.com>
+# Date 1317293932 -3600
+# Node ID ba4cba41f5550684719bc95a25f8f51b92fb604f
+# Parent  7998217630e236639825d4db174c852cfa18e709
+[OCAML] Rename the ocamlfind packages
+
+ocamlfind does not support namespaces, so to avoid
+name clashes the ocamlfind package names have been
+changed. Note that this does not change the names
+of the actual modules themselves.
+
+xb becomes xenbus, xc becomes xenctrl, xl becomes xenlight, 
+xs becomes xenstore, eventchn becomes xeneventchn.
+
+Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
+
+diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/eventchn/Makefile
+--- a/tools/ocaml/libs/eventchn/Makefile	Wed Sep 28 16:42:11 2011 +0100
++++ b/tools/ocaml/libs/eventchn/Makefile	Thu Sep 29 11:58:52 2011 +0100
+@@ -24,12 +24,12 @@
+ .PHONY: install
+ install: $(LIBS) META
+ 	mkdir -p $(OCAMLDESTDIR)
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) eventchn
+-	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore eventchn META $(INTF) $(LIBS) *.a *.so *.cmx
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xeneventchn
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xeneventchn META $(INTF) $(LIBS) *.a *.so *.cmx
+ 
+ .PHONY: uninstall
+ uninstall:
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) eventchn
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xeneventchn
+ 
+ include $(TOPLEVEL)/Makefile.rules
+ 
+diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xb/Makefile
+--- a/tools/ocaml/libs/xb/Makefile	Wed Sep 28 16:42:11 2011 +0100
++++ b/tools/ocaml/libs/xb/Makefile	Thu Sep 29 11:58:52 2011 +0100
+@@ -36,11 +36,11 @@
+ .PHONY: install
+ install: $(LIBS) META
+ 	mkdir -p $(OCAMLDESTDIR)
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xb
+-	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xb META $(INTF) $(LIBS) *.a *.so *.cmx
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenbus
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenbus META $(INTF) $(LIBS) *.a *.so *.cmx
+ 
+ .PHONY: uninstall
+ uninstall:
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xb
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenbus
+ 
+ include $(TOPLEVEL)/Makefile.rules
+diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xc/Makefile
+--- a/tools/ocaml/libs/xc/Makefile	Wed Sep 28 16:42:11 2011 +0100
++++ b/tools/ocaml/libs/xc/Makefile	Thu Sep 29 11:58:52 2011 +0100
+@@ -23,11 +23,11 @@
+ .PHONY: install
+ install: $(LIBS) META
+ 	mkdir -p $(OCAMLDESTDIR)
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xc
+-	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xc META $(INTF) $(LIBS) *.a *.so *.cmx
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenctrl
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenctrl META $(INTF) $(LIBS) *.a *.so *.cmx
+ 
+ .PHONY: uninstall
+ uninstall:
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xc
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenctrl
+ 
+ include $(TOPLEVEL)/Makefile.rules
+diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xl/Makefile
+--- a/tools/ocaml/libs/xl/Makefile	Wed Sep 28 16:42:11 2011 +0100
++++ b/tools/ocaml/libs/xl/Makefile	Thu Sep 29 11:58:52 2011 +0100
+@@ -56,11 +56,11 @@
+ .PHONY: install
+ install: $(LIBS) META
+ 	mkdir -p $(OCAMLDESTDIR)
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xl
+-	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xl META $(INTF) $(LIBS) *.a *.so *.cmx
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenlight
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenlight META $(INTF) $(LIBS) *.a *.so *.cmx
+ 
+ .PHONY: uninstall
+ uninstall:
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xl
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenlight
+ 
+ include $(TOPLEVEL)/Makefile.rules
+diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xs/Makefile
+--- a/tools/ocaml/libs/xs/Makefile	Wed Sep 28 16:42:11 2011 +0100
++++ b/tools/ocaml/libs/xs/Makefile	Thu Sep 29 11:58:52 2011 +0100
+@@ -26,12 +26,12 @@
+ .PHONY: install
+ install: $(LIBS) META
+ 	mkdir -p $(OCAMLDESTDIR)
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xs
+-	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xs META $(INTF) xs.mli xst.mli xsraw.mli $(LIBS) *.a *.cmx
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenstore
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenstore META $(INTF) xs.mli xst.mli xsraw.mli $(LIBS) *.a *.cmx
+ 
+ .PHONY: uninstall
+ uninstall:
+-	ocamlfind remove -destdir $(OCAMLDESTDIR) xs
++	ocamlfind remove -destdir $(OCAMLDESTDIR) xenstore
+ 
+ include $(TOPLEVEL)/Makefile.rules
+ 
