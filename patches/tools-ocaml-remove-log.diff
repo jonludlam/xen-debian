@@ -11,9 +11,8 @@ merged in.
 Signed-off-by: Zheng Li <zheng.li@eu.citrix.com>
 Acked-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/Makefile
---- a/tools/ocaml/libs/Makefile	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/libs/Makefile	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/libs/Makefile
++++ b/tools/ocaml/libs/Makefile
 @@ -3,7 +3,7 @@
  
  SUBDIRS= \
@@ -23,66 +22,16 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/Makefile
  	xb xs xl
  
  .PHONY: all
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/META.in
---- a/tools/ocaml/libs/log/META.in	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/META.in
++++ /dev/null
 @@ -1,5 +0,0 @@
 -version = "@VERSION@"
 -description = "Log - logging library"
 -requires = "unix"
 -archive(byte) = "log.cma"
 -archive(native) = "log.cmxa"
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/Makefile
---- a/tools/ocaml/libs/log/Makefile	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
-@@ -1,44 +0,0 @@
--TOPLEVEL=$(CURDIR)/../..
--XEN_ROOT=$(TOPLEVEL)/../..
--include $(TOPLEVEL)/common.make
--
--OBJS = syslog log logs
--INTF = log.cmi logs.cmi syslog.cmi
--LIBS = log.cma log.cmxa
--
--all: $(INTF) $(LIBS) $(PROGRAMS)
--
--bins: $(PROGRAMS)
--
--libs: $(LIBS)
--
--log.cmxa: libsyslog_stubs.a $(foreach obj,$(OBJS),$(obj).cmx)
--	$(call mk-caml-lib-native, $@, -cclib -lsyslog_stubs, $(foreach obj,$(OBJS),$(obj).cmx))
--
--log.cma: $(foreach obj,$(OBJS),$(obj).cmo)
--	$(call mk-caml-lib-bytecode, $@, -dllib dllsyslog_stubs.so -cclib -lsyslog_stubs, $(foreach obj,$(OBJS),$(obj).cmo))
--
--syslog_stubs.a: syslog_stubs.o
--	$(call mk-caml-stubs, $@, $+)
--
--libsyslog_stubs.a: syslog_stubs.o
--	$(call mk-caml-lib-stubs, $@, $+)
--
--logs.mli : logs.ml
--	$(OCAMLC) -i $(OCAMLCFLAGS) $< > $@
--
--syslog.mli : syslog.ml
--	$(OCAMLC) -i $< > $@
--
--.PHONY: install
--install: $(LIBS) META
--	mkdir -p $(OCAMLDESTDIR)
--	ocamlfind remove -destdir $(OCAMLDESTDIR) log
--	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore log META $(INTF) $(LIBS) *.a *.so *.cmx
--
--.PHONY: uninstall
--uninstall:
--	ocamlfind remove -destdir $(OCAMLDESTDIR) log
--
--include $(TOPLEVEL)/Makefile.rules
--
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/log.ml
---- a/tools/ocaml/libs/log/log.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/log.ml
++++ /dev/null
 @@ -1,258 +0,0 @@
 -(*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -342,9 +291,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/log.ml
 -let info t (fmt: ('a , unit, string, unit) format4) = log t Info fmt
 -let warn t (fmt: ('a , unit, string, unit) format4) = log t Warn fmt
 -let error t (fmt: ('a , unit, string, unit) format4) = log t Error fmt
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/log.mli
---- a/tools/ocaml/libs/log/log.mli	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/log.mli
++++ /dev/null
 @@ -1,55 +0,0 @@
 -(*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -401,9 +349,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/log.mli
 -val info : t -> ('a, unit, string, unit) format4 -> 'a
 -val warn : t -> ('a, unit, string, unit) format4 -> 'a
 -val error : t -> ('a, unit, string, unit) format4 -> 'a
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/logs.ml
---- a/tools/ocaml/libs/log/logs.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/logs.ml
++++ /dev/null
 @@ -1,197 +0,0 @@
 -(*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -602,9 +549,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/logs.ml
 -	log t Log.Warn ?extra fmt
 -let error t ?extra (fmt: ('a , unit, string, unit) format4) =
 -	log t Log.Error ?extra fmt
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/logs.mli
---- a/tools/ocaml/libs/log/logs.mli	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/logs.mli
++++ /dev/null
 @@ -1,46 +0,0 @@
 -(*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -652,9 +598,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/logs.mli
 -val info : string -> ?extra:string -> ('a, unit, string, unit) format4 -> 'a
 -val warn : string -> ?extra:string -> ('a, unit, string, unit) format4 -> 'a
 -val error : string -> ?extra:string -> ('a, unit, string, unit) format4 -> 'a
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/syslog.ml
---- a/tools/ocaml/libs/log/syslog.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/syslog.ml
++++ /dev/null
 @@ -1,26 +0,0 @@
 -(*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -682,9 +627,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/syslog.ml
 -(* external init : string -> options list -> facility -> unit = "stub_openlog" *)
 -external log : facility -> level -> string -> unit = "stub_syslog"
 -external close : unit -> unit = "stub_closelog"
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/syslog.mli
---- a/tools/ocaml/libs/log/syslog.mli	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/syslog.mli
++++ /dev/null
 @@ -1,41 +0,0 @@
 -(*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -727,9 +671,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/syslog.mli
 -  | Uucp
 -external log : facility -> level -> string -> unit = "stub_syslog"
 -external close : unit -> unit = "stub_closelog"
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/syslog_stubs.c
---- a/tools/ocaml/libs/log/syslog_stubs.c	Thu Sep 29 12:31:19 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/log/syslog_stubs.c
++++ /dev/null
 @@ -1,75 +0,0 @@
 -/*
 - * Copyright (C) 2006-2007 XenSource Ltd.
@@ -806,9 +749,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/libs/log/syslog_stubs.c
 -	closelog();
 -	CAMLreturn(Val_unit);
 -}
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/Makefile
---- a/tools/ocaml/xenstored/Makefile	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/Makefile	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/Makefile
++++ b/tools/ocaml/xenstored/Makefile
 @@ -3,7 +3,6 @@
  include $(OCAML_TOPLEVEL)/common.make
  
@@ -825,9 +767,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/Makefile
  	-ccopt -L -ccopt $(OCAML_TOPLEVEL)/libs/eventchn $(OCAML_TOPLEVEL)/libs/eventchn/eventchn.cmxa \
  	-ccopt -L -ccopt $(OCAML_TOPLEVEL)/libs/xc $(OCAML_TOPLEVEL)/libs/xc/xc.cmxa \
  	-ccopt -L -ccopt $(OCAML_TOPLEVEL)/libs/xb $(OCAML_TOPLEVEL)/libs/xb/xb.cmxa \
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/connection.ml
---- a/tools/ocaml/xenstored/connection.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/connection.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/connection.ml
++++ b/tools/ocaml/xenstored/connection.ml
 @@ -232,3 +232,8 @@
  			Printf.fprintf chan "watch,%d,%s,%s\n" domid (Utils.hexify path) (Utils.hexify token)
  			) (list_watches con);
@@ -837,9 +778,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/connection.ml
 +	let domid = get_domstr con in
 +	let watches = List.map (fun (path, token) -> Printf.sprintf "watch %s: %s %s\n" domid path token) (list_watches con) in
 +	String.concat "" watches
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/connections.ml
---- a/tools/ocaml/xenstored/connections.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/connections.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/connections.ml
++++ b/tools/ocaml/xenstored/connections.ml
 @@ -15,7 +15,7 @@
   * GNU Lesser General Public License for more details.
   *)
@@ -858,9 +798,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/connections.ml
 +	let anonymous = List.map Connection.debug cons.anonymous in
 +	let domains = Hashtbl.fold (fun _ con accu -> Connection.debug con :: accu) cons.domains [] in
 +	String.concat "" (domains @ anonymous)
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/disk.ml
---- a/tools/ocaml/xenstored/disk.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/disk.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/disk.ml
++++ b/tools/ocaml/xenstored/disk.ml
 @@ -17,7 +17,7 @@
  let enable = ref false
  let xs_daemon_database = "/var/run/xenstored/db"
@@ -870,9 +809,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/disk.ml
  
  (* unescape utils *)
  exception Bad_escape
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/domain.ml
---- a/tools/ocaml/xenstored/domain.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/domain.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/domain.ml
++++ b/tools/ocaml/xenstored/domain.ml
 @@ -16,7 +16,7 @@
  
  open Printf
@@ -882,9 +820,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/domain.ml
  
  type t =
  {
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/domains.ml
---- a/tools/ocaml/xenstored/domains.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/domains.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/domains.ml
++++ b/tools/ocaml/xenstored/domains.ml
 @@ -14,6 +14,8 @@
   * GNU Lesser General Public License for more details.
   *)
@@ -912,9 +849,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/domains.ml
  			dead_dom := id :: !dead_dom;
  		) doms.table;
  	List.iter (fun id ->
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
---- a/tools/ocaml/xenstored/logging.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/logging.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/logging.ml
++++ b/tools/ocaml/xenstored/logging.ml
 @@ -17,21 +17,122 @@
  open Stdext
  open Printf
@@ -928,18 +864,13 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
 -let access_log_nb_lines = ref 13215
 -let activate_access_log = ref true
 +(* Logger common *)
- 
--(* maximal size of the lines in xenstore-acces.log file *)
--let line_size = 180
++
 +type logger =
 +		{ stop: unit -> unit;
 +		  restart: unit -> unit;
 +		  rotate: unit -> unit;
 +		  write: 'a. ('a, unit, string, unit) format4 -> 'a }
- 
--let log_read_ops = ref false
--let log_transaction_ops = ref false
--let log_special_ops = ref false
++
 +let truncate_line nb_chars line = 
 +	if String.length line > nb_chars - 1 then
 +		let len = max (nb_chars - 1) 2 in
@@ -967,7 +898,9 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
 +	List.iter (fun (f, n) -> Unix.rename f (file n)) log_files;
 +	close_out !ref_ch;
 +	ref_ch := open_out log_file
-+
+ 
+-(* maximal size of the lines in xenstore-acces.log file *)
+-let line_size = 180
 +let make_logger log_file log_nb_files log_nb_lines log_nb_chars post_rotate =
 +	let channel = ref (open_out_gen [Open_append; Open_creat] 0o644 log_file) in
 +	let counter = ref 0 in
@@ -1008,7 +941,10 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
 +let level_of_string = function
 +	| "debug" -> Debug | "info"  -> Info | "warn"  -> Warn
 +	| "error" -> Error | "null"  -> Null | s  -> raise (Unknown_level s)
-+
+ 
+-let log_read_ops = ref false
+-let log_transaction_ops = ref false
+-let log_special_ops = ref false
 +let string_of_date () =
 +	let time = Unix.gettimeofday () in
 +	let tm = Unix.gmtime time in
@@ -1172,6 +1108,11 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
 -					counter := 0;
 -				end
 -	}
+-
+-let access : (access option) ref = ref None
+-let init aal save_to_disk =
+-	activate_access_log := aal;
+-	access := Some (make save_to_disk)
 +let activate_access_log = ref true
 +let access_log_file = ref "/var/log/xenstored-access.log"
 +let access_log_nb_files = ref 20
@@ -1181,11 +1122,7 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
 +let access_log_transaction_ops = ref false
 +let access_log_special_ops = ref false
 +let access_logger = ref None
- 
--let access : (access option) ref = ref None
--let init aal save_to_disk =
--	activate_access_log := aal;
--	access := Some (make save_to_disk)
++
 +let init_access_log post_rotate =
 +	if !access_log_nb_files > 0 then
 +		let logger =
@@ -1267,9 +1204,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/logging.ml
 -		then write_access_log ~tid ~con ~data (XbOp ty)
 +		| _ -> false in
 +	if print then access_logging ~tid ~con ~data (XbOp ty)
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/perms.ml
---- a/tools/ocaml/xenstored/perms.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/perms.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/perms.ml
++++ b/tools/ocaml/xenstored/perms.ml
 @@ -15,6 +15,8 @@
   * GNU Lesser General Public License for more details.
   *)
@@ -1299,9 +1235,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/perms.ml
  			false
  	in
  	if !activate
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/process.ml
---- a/tools/ocaml/xenstored/process.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/process.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/process.ml
++++ b/tools/ocaml/xenstored/process.ml
 @@ -14,6 +14,9 @@
   * GNU Lesser General Public License for more details.
   *)
@@ -1359,9 +1294,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/process.ml
  			         (Connection.get_domstr con)
  			         (Xb.Op.to_string ty) (sanitize_data data);*)
  			write_answer_log ~ty ~tid ~con ~data;
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/quota.ml
---- a/tools/ocaml/xenstored/quota.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/quota.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/quota.ml
++++ b/tools/ocaml/xenstored/quota.ml
 @@ -18,7 +18,7 @@
  exception Data_too_big
  exception Transaction_opened
@@ -1371,9 +1305,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/quota.ml
  let activate = ref true
  let maxent = ref (10000)
  let maxsize = ref (4096)
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/store.ml
---- a/tools/ocaml/xenstored/store.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/store.ml	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/store.ml
++++ b/tools/ocaml/xenstored/store.ml
 @@ -83,7 +83,7 @@
  let check_owner node connection =
  	if not (Perms.check_owner connection node.perms)
@@ -1383,9 +1316,8 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/store.ml
  		raise Define.Permission_denied;
  	end
  
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/xenstored.conf
---- a/tools/ocaml/xenstored/xenstored.conf	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/xenstored.conf	Thu Sep 29 13:41:18 2011 +0100
+--- a/tools/ocaml/xenstored/xenstored.conf
++++ b/tools/ocaml/xenstored/xenstored.conf
 @@ -22,9 +22,14 @@
  # Activate filed base backend
  persistant = false
@@ -1398,17 +1330,16 @@ diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/xenstored.conf
 +# xenstored-log-file = /var/log/xenstored.log
 +# xenstored-log-level = null
 +# xenstored-log-nb-files = 10
- 
--# log = debug;io;file:/var/log/xenstored-io.log
++
 +# Xenstored access logs
 +# access-log-file = /var/log/xenstored-access.log
 +# access-log-nb-lines = 13215
 +# acesss-log-nb-chars = 180
 +# access-log-special-ops = false
-+
-diff -r 6c87e9dc5331 -r f628a2174cd0 tools/ocaml/xenstored/xenstored.ml
---- a/tools/ocaml/xenstored/xenstored.ml	Thu Sep 29 12:31:19 2011 +0100
-+++ b/tools/ocaml/xenstored/xenstored.ml	Thu Sep 29 13:41:18 2011 +0100
+ 
+-# log = debug;io;file:/var/log/xenstored-io.log
+--- a/tools/ocaml/xenstored/xenstored.ml
++++ b/tools/ocaml/xenstored/xenstored.ml
 @@ -18,7 +18,10 @@
  open Printf
  open Parse_arg

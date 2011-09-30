@@ -10,9 +10,8 @@ The library was only minimally used, and was really rather redundant.
 Signed-off-by: Zheng Li <zheng.li@eu.citrix.com>
 Acked-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/Makefile
---- a/tools/ocaml/libs/Makefile	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/Makefile	Thu Sep 29 12:31:19 2011 +0100
+--- a/tools/ocaml/libs/Makefile
++++ b/tools/ocaml/libs/Makefile
 @@ -2,7 +2,7 @@
  include $(XEN_ROOT)/tools/Rules.mk
  
@@ -22,61 +21,25 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/Makefile
  	log xc eventchn \
  	xb xs xl
  
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/eventchn/Makefile
---- a/tools/ocaml/libs/eventchn/Makefile	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/eventchn/Makefile	Thu Sep 29 12:31:19 2011 +0100
-@@ -7,6 +7,7 @@
+--- a/tools/ocaml/libs/eventchn/Makefile
++++ b/tools/ocaml/libs/eventchn/Makefile
+@@ -5,6 +5,7 @@
  OBJS = eventchn
  INTF = $(foreach obj, $(OBJS),$(obj).cmi)
  LIBS = eventchn.cma eventchn.cmxa
 +LIBS_eventchn = -L$(XEN_ROOT)/tools/libxc -lxenctrl
  
- LIBS_evtchn = $(LDLIBS_libxenctrl)
+ all: $(INTF) $(LIBS) $(PROGRAMS)
  
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/uuid/META.in
---- a/tools/ocaml/libs/uuid/META.in	Thu Sep 29 11:58:52 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/uuid/META.in
++++ /dev/null
 @@ -1,4 +0,0 @@
 -version = "@VERSION@"
 -description = "Uuid - universal identifer"
 -archive(byte) = "uuid.cma"
 -archive(native) = "uuid.cmxa"
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/uuid/Makefile
---- a/tools/ocaml/libs/uuid/Makefile	Thu Sep 29 11:58:52 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
-@@ -1,29 +0,0 @@
--TOPLEVEL=$(CURDIR)/../..
--XEN_ROOT=$(TOPLEVEL)/../..
--include $(TOPLEVEL)/common.make
--
--OBJS = uuid
--INTF = $(foreach obj, $(OBJS),$(obj).cmi)
--LIBS = uuid.cma uuid.cmxa
--
--all: $(INTF) $(LIBS) $(PROGRAMS)
--
--bins: $(PROGRAMS)
--
--libs: $(LIBS)
--
--uuid_OBJS = $(OBJS)
--OCAML_NOC_LIBRARY = uuid
--
--.PHONY: install
--install: $(LIBS) META
--	mkdir -p $(OCAMLDESTDIR)
--	ocamlfind remove -destdir $(OCAMLDESTDIR) uuid
--	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore uuid META $(INTF) $(LIBS) *.a *.cmx
--
--.PHONY: uninstall
--uninstall:
--	ocamlfind remove -destdir $(OCAMLDESTDIR) uuid
--
--include $(TOPLEVEL)/Makefile.rules
--
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/uuid/uuid.ml
---- a/tools/ocaml/libs/uuid/uuid.ml	Thu Sep 29 11:58:52 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/uuid/uuid.ml
++++ /dev/null
 @@ -1,100 +0,0 @@
 -(*
 - * Copyright (C) 2006-2010 Citrix Systems Inc.
@@ -178,9 +141,8 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/uuid/uuid.ml
 -			"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x"
 -			(fun _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ -> true)
 -	with _ -> false
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/uuid/uuid.mli
---- a/tools/ocaml/libs/uuid/uuid.mli	Thu Sep 29 11:58:52 2011 +0100
-+++ /dev/null	Thu Jan 01 00:00:00 1970 +0000
+--- a/tools/ocaml/libs/uuid/uuid.mli
++++ /dev/null
 @@ -1,67 +0,0 @@
 -(*
 - * Copyright (C) 2006-2010 Citrix Systems Inc.
@@ -249,10 +211,9 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/uuid/uuid.mli
 -val cookie_of_string : string -> cookie
 -
 -val string_of_cookie : cookie -> string
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xb/Makefile
---- a/tools/ocaml/libs/xb/Makefile	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/xb/Makefile	Thu Sep 29 12:31:19 2011 +0100
-@@ -31,7 +31,7 @@
+--- a/tools/ocaml/libs/xb/Makefile
++++ b/tools/ocaml/libs/xb/Makefile
+@@ -29,7 +29,7 @@
  
  %.mli: %.ml
  	$(E) " MLI       $@"
@@ -261,9 +222,8 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xb/Makefile
  
  .PHONY: install
  install: $(LIBS) META
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/META.in
---- a/tools/ocaml/libs/xc/META.in	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/xc/META.in	Thu Sep 29 12:31:19 2011 +0100
+--- a/tools/ocaml/libs/xc/META.in
++++ b/tools/ocaml/libs/xc/META.in
 @@ -1,5 +1,5 @@
  version = "@VERSION@"
  description = "Xen Control Interface"
@@ -271,21 +231,19 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/META.in
 +requires = "unix,mmap"
  archive(byte) = "xc.cma"
  archive(native) = "xc.cmxa"
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/Makefile
---- a/tools/ocaml/libs/xc/Makefile	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/xc/Makefile	Thu Sep 29 12:31:19 2011 +0100
+--- a/tools/ocaml/libs/xc/Makefile
++++ b/tools/ocaml/libs/xc/Makefile
 @@ -3,7 +3,7 @@
  include $(TOPLEVEL)/common.make
  
- CFLAGS += -I../mmap $(CFLAGS_libxenctrl) $(CFLAGS_libxenguest)
--OCAMLINCLUDE += -I ../mmap -I ../uuid
-+OCAMLINCLUDE += -I ../mmap
+ CFLAGS += -I../mmap -I./ -I$(XEN_ROOT)/tools/libxc
+-OCAMLINCLUDE += -I ../mmap -I ../uuid -I $(XEN_ROOT)/tools/libxc
++OCAMLINCLUDE += -I ../mmap -I $(XEN_ROOT)/tools/libxc
  
  OBJS = xc
  INTF = xc.cmi
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/xc.ml
---- a/tools/ocaml/libs/xc/xc.ml	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/xc/xc.ml	Thu Sep 29 12:31:19 2011 +0100
+--- a/tools/ocaml/libs/xc/xc.ml
++++ b/tools/ocaml/libs/xc/xc.ml
 @@ -118,14 +118,23 @@
  external _domain_create: handle -> int32 -> domain_create_flag list -> int array -> domid
         = "stub_xc_domain_create"
@@ -312,9 +270,8 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/xc.ml
  
  external domain_max_vcpus: handle -> domid -> int -> unit
         = "stub_xc_domain_max_vcpus"
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/xc.mli
---- a/tools/ocaml/libs/xc/xc.mli	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/libs/xc/xc.mli	Thu Sep 29 12:31:19 2011 +0100
+--- a/tools/ocaml/libs/xc/xc.mli
++++ b/tools/ocaml/libs/xc/xc.mli
 @@ -74,12 +74,8 @@
  external is_fake : unit -> bool = "stub_xc_interface_is_fake"
  external interface_close : handle -> unit = "stub_xc_interface_close"
@@ -330,9 +287,8 @@ diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/libs/xc/xc.mli
  external domain_max_vcpus : handle -> domid -> int -> unit
    = "stub_xc_domain_max_vcpus"
  external domain_pause : handle -> domid -> unit = "stub_xc_domain_pause"
-diff -r ba4cba41f555 -r 6c87e9dc5331 tools/ocaml/xenstored/Makefile
---- a/tools/ocaml/xenstored/Makefile	Thu Sep 29 11:58:52 2011 +0100
-+++ b/tools/ocaml/xenstored/Makefile	Thu Sep 29 12:31:19 2011 +0100
+--- a/tools/ocaml/xenstored/Makefile
++++ b/tools/ocaml/xenstored/Makefile
 @@ -5,7 +5,6 @@
  OCAMLINCLUDE += \
  	-I $(OCAML_TOPLEVEL)/libs/log \

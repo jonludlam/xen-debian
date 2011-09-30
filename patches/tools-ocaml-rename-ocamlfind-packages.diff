@@ -15,10 +15,9 @@ xs becomes xenstore, eventchn becomes xeneventchn.
 
 Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 
-diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/eventchn/Makefile
---- a/tools/ocaml/libs/eventchn/Makefile	Wed Sep 28 16:42:11 2011 +0100
-+++ b/tools/ocaml/libs/eventchn/Makefile	Thu Sep 29 11:58:52 2011 +0100
-@@ -24,12 +24,12 @@
+--- a/tools/ocaml/libs/eventchn/Makefile
++++ b/tools/ocaml/libs/eventchn/Makefile
+@@ -20,12 +20,12 @@
  .PHONY: install
  install: $(LIBS) META
  	mkdir -p $(OCAMLDESTDIR)
@@ -34,10 +33,9 @@ diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/eventchn/Makefile
  
  include $(TOPLEVEL)/Makefile.rules
  
-diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xb/Makefile
---- a/tools/ocaml/libs/xb/Makefile	Wed Sep 28 16:42:11 2011 +0100
-+++ b/tools/ocaml/libs/xb/Makefile	Thu Sep 29 11:58:52 2011 +0100
-@@ -36,11 +36,11 @@
+--- a/tools/ocaml/libs/xb/Makefile
++++ b/tools/ocaml/libs/xb/Makefile
+@@ -34,11 +34,11 @@
  .PHONY: install
  install: $(LIBS) META
  	mkdir -p $(OCAMLDESTDIR)
@@ -52,9 +50,8 @@ diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xb/Makefile
 +	ocamlfind remove -destdir $(OCAMLDESTDIR) xenbus
  
  include $(TOPLEVEL)/Makefile.rules
-diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xc/Makefile
---- a/tools/ocaml/libs/xc/Makefile	Wed Sep 28 16:42:11 2011 +0100
-+++ b/tools/ocaml/libs/xc/Makefile	Thu Sep 29 11:58:52 2011 +0100
+--- a/tools/ocaml/libs/xc/Makefile
++++ b/tools/ocaml/libs/xc/Makefile
 @@ -23,11 +23,11 @@
  .PHONY: install
  install: $(LIBS) META
@@ -70,10 +67,9 @@ diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xc/Makefile
 +	ocamlfind remove -destdir $(OCAMLDESTDIR) xenctrl
  
  include $(TOPLEVEL)/Makefile.rules
-diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xl/Makefile
---- a/tools/ocaml/libs/xl/Makefile	Wed Sep 28 16:42:11 2011 +0100
-+++ b/tools/ocaml/libs/xl/Makefile	Thu Sep 29 11:58:52 2011 +0100
-@@ -56,11 +56,11 @@
+--- a/tools/ocaml/libs/xl/Makefile
++++ b/tools/ocaml/libs/xl/Makefile
+@@ -18,11 +18,11 @@
  .PHONY: install
  install: $(LIBS) META
  	mkdir -p $(OCAMLDESTDIR)
@@ -88,10 +84,9 @@ diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xl/Makefile
 +	ocamlfind remove -destdir $(OCAMLDESTDIR) xenlight
  
  include $(TOPLEVEL)/Makefile.rules
-diff -r 7998217630e2 -r ba4cba41f555 tools/ocaml/libs/xs/Makefile
---- a/tools/ocaml/libs/xs/Makefile	Wed Sep 28 16:42:11 2011 +0100
-+++ b/tools/ocaml/libs/xs/Makefile	Thu Sep 29 11:58:52 2011 +0100
-@@ -26,12 +26,12 @@
+--- a/tools/ocaml/libs/xs/Makefile
++++ b/tools/ocaml/libs/xs/Makefile
+@@ -34,12 +34,12 @@
  .PHONY: install
  install: $(LIBS) META
  	mkdir -p $(OCAMLDESTDIR)
