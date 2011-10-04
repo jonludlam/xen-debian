@@ -102,3 +102,12 @@ Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
  
  include $(TOPLEVEL)/Makefile.rules
  
+--- a/tools/ocaml/libs/xs/META.in
++++ b/tools/ocaml/libs/xs/META.in
+@@ -1,5 +1,5 @@
+ version = "@VERSION@"
+ description = "XenStore Interface"
+-requires = "unix,xb"
++requires = "unix,xenbus"
+ archive(byte) = "xs.cma"
+ archive(native) = "xs.cmxa"
