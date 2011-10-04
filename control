@@ -6,7 +6,7 @@ Uploaders: Julien Danjou <acid@debian.org>, Guido Trotter <ultrotter@debian.org>
 Standards-Version: 3.8.4
 Build-Depends: debhelper (>> 7), lsb-release, dh-ocaml, python-dev, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev, ocaml-nox, ocaml-findlib
 Build-Depends-Indep: graphviz, ghostscript, texlive-fonts-recommended, texlive-font-utils, texlive-latex-recommended
-XS-Python-Version: 2.6
+XS-Python-Version: 2.7
 
 Package: xen-docs-4.1
 Architecture: all
