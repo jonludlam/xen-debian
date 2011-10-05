@@ -6384,11 +6384,11 @@ Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 -#	$(Q)$(OCAMLC) -a -o $@ $(foreach obj,$(OBJS),$(obj).cmo)
 +xenstore.cmx : $(foreach obj, $(OBJS), $(obj).cmx)
 +	$(E) " CMX       $@"
-+	$(Q)$(OCAMLOPT) -pack -o $@ $<
++	$(Q)$(OCAMLOPT) -pack -o $@ $^
 +
 +xenstore.cmo : $(foreach obj, $(OBJS), $(obj).cmo)
 +	$(E) " CMO       $@"
-+	$(Q)$(OCAMLC) -pack -o $@ $<
++	$(Q)$(OCAMLC) -pack -o $@ $^
  
  .PHONY: install
  install: $(LIBS) META
