@@ -1,2 +1,2 @@
-usr/lib/ocaml/{xenlight,xenbus,xenctrl,xenstore,xeneventchn,mmap}
+usr/lib/ocaml/{xenlight,xenbus,xenctrl,xenstore,xeneventchn,xenmmap}
 
