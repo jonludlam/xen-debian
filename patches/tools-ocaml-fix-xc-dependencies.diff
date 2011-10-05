@@ -1,0 +1,14 @@
+[OCAML] Add a missing dependency to the xenctrl ocaml package
+
+Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
+
+diff -r c954d2133ae0 tools/ocaml/libs/xc/META.in
+--- a/tools/ocaml/libs/xc/META.in
++++ b/tools/ocaml/libs/xc/META.in
+@@ -1,5 +1,5 @@
+ version = "@VERSION@"
+ description = "Xen Control Interface"
+-requires = "xenmmap,uuid"
++requires = "unix,xenmmap,uuid"
+ archive(byte) = "xenctrl.cma"
+ archive(native) = "xenctrl.cmxa"

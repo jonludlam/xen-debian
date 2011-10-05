@@ -5,15 +5,15 @@
 # Parent  13d23255cd00c05b01aef31e13aeea8b2cb8e9db
 [OCAML] Fix 2 bit-twiddling bugs and an off-by-one
 
-The bit bugs are in ocaml vcpu affinity calls, and the off-by-one 
+The bit bugs are in ocaml vcpu affinity calls, and the off-by-one
 error is in the ocaml console ring code
 
 Signed-off-by: Zheng Li <zheng.li@eu.citrix.com>
 Acked-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 
-diff -r 13d23255cd00 -r 0efaa816859e tools/ocaml/libs/xc/xc_stubs.c
---- a/tools/ocaml/libs/xc/xc_stubs.c	Thu Sep 29 15:18:14 2011 +0100
-+++ b/tools/ocaml/libs/xc/xc_stubs.c	Thu Sep 29 15:25:03 2011 +0100
+diff -r 80834befd0cf tools/ocaml/libs/xc/xenctrl_stubs.c
+--- a/tools/ocaml/libs/xc/xenctrl_stubs.c
++++ b/tools/ocaml/libs/xc/xenctrl_stubs.c
 @@ -430,7 +430,7 @@
  
  	for (i=0; i<len; i++) {
