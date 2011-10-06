@@ -6344,9 +6344,11 @@ Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
  version = "@VERSION@"
  description = "XenStore Interface"
 -requires = "unix,xb"
+-archive(byte) = "xs.cma"
+-archive(native) = "xs.cmxa"
 +requires = "unix,xenbus"
- archive(byte) = "xs.cma"
- archive(native) = "xs.cmxa"
++archive(byte) = "xenstore.cma"
++archive(native) = "xenstore.cmxa"
 --- a/tools/ocaml/libs/xs/Makefile
 +++ b/tools/ocaml/libs/xs/Makefile
 @@ -3,6 +3,7 @@
@@ -7908,3 +7910,12 @@ Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 +external send_trigger : domid -> string -> int -> unit = "stub_xl_send_trigger"
 +external send_sysrq : domid -> char -> unit = "stub_xl_send_sysrq"
 +external send_debug_keys : domid -> string -> unit = "stub_xl_send_debug_keys"
+--- a/tools/ocaml/libs/xl/META.in
++++ b/tools/ocaml/libs/xl/META.in
+@@ -1,4 +1,4 @@
+ version = "@VERSION@"
+ description = "Xen Toolstack Library"
+-archive(byte) = "xl.cma"
+-archive(native) = "xl.cmxa"
++archive(byte) = "xenlight.cma"
++archive(native) = "xenlight.cmxa"
