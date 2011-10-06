@@ -1011,7 +1011,7 @@ Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 -	ocamlfind remove -destdir $(OCAMLDESTDIR) xb
 -	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xb META $(INTF) $(LIBS) *.a *.so *.cmx
 +	ocamlfind remove -destdir $(OCAMLDESTDIR) xenbus
-+	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenbus META $(INTF) $(LIBS) xenbus.cmi xenbus.cmx *.a *.so *.cmx
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenbus META $(LIBS) xenbus.cmi xenbus.cmx *.a *.so 
  
  .PHONY: uninstall
  uninstall:
@@ -6396,7 +6396,7 @@ Signed-off-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 -	ocamlfind remove -destdir $(OCAMLDESTDIR) xs
 -	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xs META $(INTF) xs.mli xst.mli xsraw.mli $(LIBS) *.a *.cmx
 +	ocamlfind remove -destdir $(OCAMLDESTDIR) xenstore
-+	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenstore META $(INTF) $(PREINTF) $(LIBS) xenstore.cmx xenstore.cmi *.a *.cmx
++	ocamlfind install -destdir $(OCAMLDESTDIR) -ldconf ignore xenstore META $(LIBS) xenstore.cmx xenstore.cmi *.a 
  
  .PHONY: uninstall
  uninstall:
