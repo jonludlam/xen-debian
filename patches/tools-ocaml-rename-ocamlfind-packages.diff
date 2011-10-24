@@ -5,6 +5,9 @@
 # Parent  7998217630e236639825d4db174c852cfa18e709
 [OCAML] Rename the ocamlfind packages
 
+This patch has the same effect as xen-unstable.hg 
+c/s 23936:cdb34816a40a.
+
 ocamlfind does not support namespaces, so to avoid
 name clashes the ocamlfind package names have been
 changed. Note that this does not change the names

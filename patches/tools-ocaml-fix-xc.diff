@@ -1,19 +1,21 @@
 # HG changeset patch
 # User Jon Ludlam <jonathan.ludlam@eu.citrix.com>
-# Date 1317306303 -3600
-# Node ID 0efaa816859e1b11c63731cd5bcd7aebe753d93c
-# Parent  13d23255cd00c05b01aef31e13aeea8b2cb8e9db
-[OCAML] Fix 2 bit-twiddling bugs and an off-by-one
+# Date 1318261276 -3600
+# Node ID 187d59e32a586d65697ed46bef106b52e3fb5ab9
+# Parent  51288f69523fcbbefa12cea5a761a6e957410151
+tools/ocaml: Fix 2 bit-twiddling bugs and an off-by-one
 
 The bit bugs are in ocaml vcpu affinity calls, and the off-by-one
 error is in the ocaml console ring code
 
 Signed-off-by: Zheng Li <zheng.li@eu.citrix.com>
+Acked-by: Ian Campbell <ian.campbell.com>
+Committed-by: Ian Jackson <ian.jackson.citrix.com>
 Acked-by: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 
-diff -r 80834befd0cf tools/ocaml/libs/xc/xenctrl_stubs.c
---- a/tools/ocaml/libs/xc/xenctrl_stubs.c
-+++ b/tools/ocaml/libs/xc/xenctrl_stubs.c
+diff -r 51288f69523f -r 187d59e32a58 tools/ocaml/libs/xc/xenctrl_stubs.c
+--- a/tools/ocaml/libs/xc/xenctrl_stubs.c	Mon Oct 10 16:41:16 2011 +0100
++++ b/tools/ocaml/libs/xc/xenctrl_stubs.c	Mon Oct 10 16:41:16 2011 +0100
 @@ -430,7 +430,7 @@
  
  	for (i=0; i<len; i++) {

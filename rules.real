@@ -76,7 +76,7 @@ $(STAMPS_DIR)/install-utils_$(ARCH): CONFIG = \
 		XEN_COMPILE_ARCH=$(XEN_ARCH) \
 		XEN_TARGET_ARCH=$(XEN_ARCH) \
 		XEN_VERSION=$(VERSION) \
-		OCAMLDESTDIR=$(CURDIR)/$(BUILD_DIR)/install-utils_$(ARCH)$(OCAML_STDLIB_DIR) \
+		OCAMLDESTDIR=$(CURDIR)/$(BUILD_DIR)/install-utils_$(ARCH)/usr/lib/xen-$(VERSION)/lib/ocaml \
 		PYTHON=$(shell pyversions -r)
 
 $(STAMPS_DIR)/build-utils_$(ARCH): DIR=$(BUILD_DIR)/build-utils_$(ARCH)
@@ -88,7 +88,7 @@ $(STAMPS_DIR)/install-utils_$(ARCH): DIR = $(BUILD_DIR)/build-utils_$(ARCH)
 $(STAMPS_DIR)/install-utils_$(ARCH): INSTALL_DIR = $(BUILD_DIR)/install-utils_$(ARCH)
 $(STAMPS_DIR)/install-utils_$(ARCH): $(STAMPS_DIR)/build-utils_$(ARCH)
 	@rm -rf $(INSTALL_DIR)
-	mkdir -p $(INSTALL_DIR)$(OCAML_DLL_DIR)
+	mkdir -p $(INSTALL_DIR)/usr/lib/xen-$(VERSION)/lib/ocaml/stublibs
 	+$(MAKE_CLEAN) -C $(DIR)/tools install DESTDIR=$(CURDIR)/$(INSTALL_DIR) $(CONFIG)
 	# hvmloader
 	#strip --remove-section=.comment --remove-section=.note $(INSTALL_DIR)/usr/lib/xen*/boot/*
@@ -141,13 +141,15 @@ install-lib-dev_$(ARCH): $(STAMPS_DIR)/install-utils_$(ARCH)
 	+$(MAKE_SELF) install-base
 
 install-lib-ocaml_$(ARCH): DIR = $(BUILD_DIR)/install-utils_$(ARCH)
-install-lib-ocaml_$(ARCH): PACKAGE_NAME = libxen-ocaml
+install-lib-ocaml_$(ARCH): PACKAGE_NAME = libxen-ocaml-4.1
 install-lib-ocaml_$(ARCH): DH_OPTIONS = -p$(PACKAGE_NAME)
 install-lib-ocaml_$(ARCH): $(STAMPS_DIR)/install-utils_$(ARCH)
 	dh_testdir
 	dh_testroot
 	dh_prep
+	ln -sf libxen-ocaml.install debian/libxen-ocaml-$(VERSION).install
 	dh_install --sourcedir=$(DIR)
+	rm debian/libxen-ocaml-$(VERSION).install
 	dh_strip
 	dh_shlibdeps
 	+$(MAKE_SELF) install-base
@@ -190,6 +192,7 @@ install-utils_$(ARCH): $(STAMPS_DIR)/install-utils_$(ARCH) install-libxenstore_$
 	install -D -m644 debian/xen-utils.README.Debian $(PACKAGE_DIR)/usr/share/doc/$(PACKAGE_NAME)/README.Debian
 	install -D -m644 debian/xen-utils-$(VERSION).lintian-overrides $(PACKAGE_DIR)/usr/share/lintian/overrides/$(PACKAGE_NAME)
 	dh_install --sourcedir=$(DIR) usr/lib/xen-$(VERSION)
+	rm -rf $(PACKAGE_DIR)/usr/lib/xen-4.1/lib/ocaml
 	dh_python2 -V$(shell pyversions -rv) /usr/lib/xen-$(VERSION)
 	dh_strip
 	dh_makeshlibs -V
