@@ -1,29 +1,30 @@
-xen (4.1.1-2.2) UNRELEASED; urgency=low
+xen (4.1.1-3) unstable; urgency=low
 
-  * Non-maintainer upload.
-  * Add some ocaml related patches
+  [ Julien Danjou ]
+  * Remove Julien Danjou from the Uploaders field. (closes: #590439)
 
- -- Ian Campbell <jon@dhcp-3-31>  Fri, 30 Sep 2011 22:04:33 +0100
+  [ Bastian Blank ]
+  * Use current version of python. (closes: #646660)
+  * Build-depend against liblzma-dev, it is used if available.
+    (closes: #646694)
+  * Update Standards-Version to 3.9.2. No changes.
+  * Don't use brace-expansion in debhelper install files.
 
-xen (4.1.1-2.1) UNRELEASED; urgency=low
+ -- Bastian Blank <waldi@debian.org>  Wed, 26 Oct 2011 14:42:33 +0200
 
-  * Non-maintainer upload.
-  * Build the ocaml libs to be packaged in libxen-dev
-
- -- Ian Campbell <Ian.Campbell@citrix.com>  Mon, 18 Jul 2011 11:30:39 +0100
-
-xen (4.1.1-2) UNRELEASED; urgency=low
+xen (4.1.1-2) unstable; urgency=low
 
   * Fix hvmloader with gcc 4.6.
 
- -- Bastian Blank <waldi@debian.org>  Fri, 05 Aug 2011 23:49:39 +0200
+ -- Bastian Blank <waldi@debian.org>  Fri, 05 Aug 2011 23:58:36 +0200
 
-xen (4.1.1-1) UNRELEASED; urgency=low
+xen (4.1.1-1) unstable; urgency=low
 
   * New upstream release.
   * Don't use qemu-dm if it is not needed. (Backport from xen-unstable.)
+  * Use dh_python2.
 
- -- Bastian Blank <waldi@debian.org>  Fri, 24 Jun 2011 17:19:44 +0000
+ -- Bastian Blank <waldi@debian.org>  Mon, 18 Jul 2011 19:38:38 +0200
 
 xen (4.1.0-3) unstable; urgency=low
 

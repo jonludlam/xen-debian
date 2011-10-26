@@ -1,9 +1,11 @@
-5b69a790d757077376f01720b0f926a6  debian/changelog
-24f2598a23e30264aea4a983d5d19eec  debian/bin/gencontrol.py
+5e705a514995538bb08e8a2de76e9748  debian/changelog
+c87eb50517b997df63e7ab6fdb72906b  debian/bin/gencontrol.py
 667edd28bcda9cd243bb69c78e452aad  debian/templates/control.hypervisor.in
 23c3f327e0edb22cf6cc5d79e61b750c  debian/templates/control.main.in
-35d4b7c17f637dccf2dcf30bcf6570c6  debian/templates/control.source.in
+1e5ee3236c515df40a13186dfd37df71  debian/templates/control.source.in
 92c32bf7b0389c47b11d05885f605750  debian/templates/control.utils.in
+4b7f47cde3608ace64690c21dbb1b9d5  debian/templates/libxen-ocaml-dev.install.in
+a7c2a109dbc63dd905db496809dad1f3  debian/templates/libxen-ocaml.install.in
 a15fa64ce6deead28d33c1581b14dba7  debian/templates/xen-hypervisor.postinst.in
 22492e0565a4754b5e008ca7cac871da  debian/templates/xen-hypervisor.postrm.in
 dcabf82578122540e0534f72750698d5  debian/templates/xen-utils.lintian-overrides.in

@@ -1,7 +1,7 @@
 Section: kernel
 Priority: optional
 Maintainer: Debian Xen Team <pkg-xen-devel@lists.alioth.debian.org>
-Uploaders: Julien Danjou <acid@debian.org>, Guido Trotter <ultrotter@debian.org>, Bastian Blank <waldi@debian.org>
+Uploaders: Guido Trotter <ultrotter@debian.org>, Bastian Blank <waldi@debian.org>
 Build-Depends:
  debhelper (>> 7), lsb-release,
  python-dev,
@@ -12,6 +12,7 @@ Build-Depends:
  ipxe,
  libaio-dev,
  libgnutls-dev,
+ liblzma-dev,
  libncurses5-dev,
  libpci-dev,
  uuid-dev,
@@ -25,6 +26,6 @@ Build-Depends-Indep:
  texlive-fonts-recommended,
  texlive-font-utils,
  texlive-latex-recommended
-Standards-Version: 3.8.4
-XS-Python-Version: 2.7
+Standards-Version: 3.9.2
+XS-Python-Version: current
 

@@ -2,11 +2,11 @@ Source: xen
 Section: kernel
 Priority: optional
 Maintainer: Debian Xen Team <pkg-xen-devel@lists.alioth.debian.org>
-Uploaders: Julien Danjou <acid@debian.org>, Guido Trotter <ultrotter@debian.org>, Bastian Blank <waldi@debian.org>
-Standards-Version: 3.8.4
-Build-Depends: debhelper (>> 7), lsb-release, python-dev, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev, ocaml-nox (>= 3.11.1-3~), dh-ocaml (>= 0.9~), ocaml-findlib
+Uploaders: Guido Trotter <ultrotter@debian.org>, Bastian Blank <waldi@debian.org>
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>> 7), lsb-release, python-dev, bcc, gcc-multilib, e2fslibs-dev, iasl, ipxe, libaio-dev, libgnutls-dev, liblzma-dev, libncurses5-dev, libpci-dev, uuid-dev, zlib1g-dev, ocaml-nox (>= 3.11.1-3~), dh-ocaml (>= 0.9~), ocaml-findlib
 Build-Depends-Indep: graphviz, ghostscript, texlive-fonts-recommended, texlive-font-utils, texlive-latex-recommended
-XS-Python-Version: 2.7
+XS-Python-Version: current
 
 Package: xen-docs-4.1
 Architecture: all
