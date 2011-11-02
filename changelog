@@ -1,4 +1,4 @@
-xen (4.1.1-3.1) lucid; urgency=low
+xen (4.1.1-3.1) oneiric; urgency=low
 
   * Ocaml related bits and pieces
 
